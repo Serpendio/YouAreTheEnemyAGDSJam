@@ -9,6 +9,8 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] LayerMask groundLayer;
     [SerializeField] float checkDist = 0.6f;
 
+    [SerializeField] private AudioSource jumpSoundEffect;
+
     Rigidbody2D rig;
     float movement;
     bool isGrounded, tryJump;
@@ -43,7 +45,11 @@ public class PlayerControls : MonoBehaviour
 
         var vel = rig.velocity;
         vel.x = movement * moveSpeed;
-        if (tryJump && isGrounded) vel.y = jumpVelocity;
+        if (tryJump && isGrounded) 
+         {
+            vel.y = jumpVelocity;
+            jumpSoundEffect.Play();
+         };
         rig.velocity = vel;
 
         tryJump = false;
