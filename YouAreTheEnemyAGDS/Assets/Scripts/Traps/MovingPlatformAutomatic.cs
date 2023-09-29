@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MovingPlatformAutomatic : MonoBehaviour, IPointerClickHandler
+public class MovingPlatformAutomatic : MonoBehaviour, ITrapBase
 {
     Vector2 startPoint;
     bool isMoving, movingToEnd, isTouchingPlayer;
@@ -21,13 +21,10 @@ public class MovingPlatformAutomatic : MonoBehaviour, IPointerClickHandler
         startPoint = transform.position;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void Trigger(bool byGhost = true)
     {
-        if (ghostCanInteract) Trigger();
-    }
+        if (byGhost && !ghostCanInteract || isMoving) return;
 
-    public void Trigger()
-    {
         isMoving = true;
         movingToEnd = !movingToEnd;
         movingPlatformSFX.Play();

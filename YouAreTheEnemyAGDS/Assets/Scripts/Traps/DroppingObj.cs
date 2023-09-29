@@ -3,17 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DroppingObj : MonoBehaviour, IPointerClickHandler
+public class DroppingObj : MonoBehaviour, ITrapBase
 {
 
     [SerializeField] private AudioSource DroppingSFX;
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Trigger();
-    }
-
-    void Trigger()
+    public void Trigger(bool byGhost = true)
     {
         GetComponent<Rigidbody2D>().isKinematic = false;
         DroppingSFX.Play();

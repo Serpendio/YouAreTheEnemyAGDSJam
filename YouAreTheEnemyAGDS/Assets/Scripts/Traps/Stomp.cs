@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Stomp : MonoBehaviour, IPointerClickHandler
+public class Stomp : MonoBehaviour, ITrapBase
 {
     [SerializeField] float maxDist, crushSpeed;
     [SerializeField] Transform crusher;
@@ -12,13 +12,10 @@ public class Stomp : MonoBehaviour, IPointerClickHandler
 
     [SerializeField] private AudioSource StompSFX;
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void Trigger(bool byGhost = true)
     {
-        Trigger();
-    }
+        if (isTriggered) return;
 
-    void Trigger()
-    {
         isTriggered = true;
         isReturning = false;
         StompSFX.Play();

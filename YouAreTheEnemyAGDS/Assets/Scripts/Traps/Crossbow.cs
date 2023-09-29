@@ -4,32 +4,24 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
-public class Crossbow : MonoBehaviour, IPointerClickHandler
+public class Crossbow : MonoBehaviour, ITrapBase
 {
     [SerializeField] Rigidbody2D bolt;
-    [SerializeField] float fireVelocity;
+    [SerializeField] float fireVelocity, cooldownTime;
+    float cooldown = 0;
 
     [SerializeField] private AudioSource crossbowSFX;
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Trigger();
-    }
 
-    void Trigger()
+    public void Trigger(bool byGhost = true)
     {
+        if (cooldown > 0) return;
+        cooldown = cooldownTime;
         Instantiate(bolt, transform.position, transform.rotation).velocity = transform.up * fireVelocity;
         crossbowSFX.Play();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (cooldown > 0) cooldown -= Time.deltaTime;
     }
 }

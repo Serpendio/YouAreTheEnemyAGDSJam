@@ -105,12 +105,12 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Drag",
+                    "name": "Hold",
                     "type": "Button",
-                    "id": "e6556004-f901-4bad-a4d0-12baa0a29933",
+                    "id": "5082a4d1-91fb-4589-be11-35ecb58eae4e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "initialStateCheck": false
                 }
             ],
@@ -118,7 +118,7 @@
                 {
                     "name": "",
                     "id": "38850cb0-34f5-47ed-beb9-87dcaaefd7c3",
-                    "path": "",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -128,12 +128,12 @@
                 },
                 {
                     "name": "",
-                    "id": "4b3900bc-35eb-4d34-8601-003174fcbb72",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "Hold",
+                    "id": "8a07d15c-8248-4e73-b25e-19e13a90d19b",
+                    "path": "",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Drag",
+                    "action": "Hold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

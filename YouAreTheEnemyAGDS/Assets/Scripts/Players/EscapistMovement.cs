@@ -17,7 +17,6 @@ public class PlayerControls : MonoBehaviour
     bool isGrounded, tryJump, climbingLadder, jumpHeld;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
