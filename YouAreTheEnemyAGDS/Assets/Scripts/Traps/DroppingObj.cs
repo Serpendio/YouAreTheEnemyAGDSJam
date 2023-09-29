@@ -13,18 +13,11 @@ public class DroppingObj : MonoBehaviour, IPointerClickHandler
 
     void Trigger()
     {
-        GetComponent<Rigidbody2D>().gravityScale = 1;
+        GetComponent<Rigidbody2D>().isKinematic = false;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GetComponent<Rigidbody2D>().isKinematic = true;
     }
 }

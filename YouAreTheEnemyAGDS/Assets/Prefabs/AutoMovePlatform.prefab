@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4309710711203355561}
   - component: {fileID: 8913306295617504661}
   - component: {fileID: 5497881099917305776}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AutoMovePlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
