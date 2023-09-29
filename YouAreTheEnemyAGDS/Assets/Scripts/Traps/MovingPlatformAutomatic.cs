@@ -1,0 +1,62 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+public class MovingPlatformAutomatic : MonoBehaviour, IPointerClickHandler
+{
+    Vector2 startPoint;
+    bool isMoving, movingToEnd, isTouchingPlayer;
+    float t;
+
+    [SerializeField] Vector2 endPoint;
+    [SerializeField] float moveSpeed;
+    [SerializeField] bool movePlayer;
+    [SerializeField] Transform player; // can make this a reference in level controller later
+
+    private void Awake()
+    {
+        startPoint = transform.position;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Trigger();
+    }
+
+    public void Trigger()
+    {
+        isMoving = true;
+        movingToEnd = !movingToEnd;
+    }
+
+    private void FixedUpdate()
+    {
+        if (isMoving)
+        {
+            // yeah I know I could make this more efficient, but meh
+            t += Time.deltaTime * moveSpeed / endPoint.magnitude * (movingToEnd ? 1 : -1);
+            if (t <= 0 || t >= 1) isMoving = false;
+            var oldPos = transform.position;
+            transform.position = Vector3.Lerp(startPoint, startPoint + endPoint, t);
+            if (movePlayer && isTouchingPlayer) player.position += transform.position - oldPos;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player")) isTouchingPlayer = true;
+    }
+    
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player")) isTouchingPlayer = false;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position + (Vector3)endPoint, 0.2f);
+    }
+}
