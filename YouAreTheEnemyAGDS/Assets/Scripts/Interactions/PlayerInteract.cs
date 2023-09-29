@@ -17,4 +17,13 @@ public class PlayerInteract : MonoBehaviour
             hasTripped = true; 
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!(triggerOneShot && hasTripped) && collision.CompareTag("Player")) 
+        { 
+            actionOnEnter.Invoke(); 
+            hasTripped = true; 
+        }
+    }
 }
