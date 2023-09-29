@@ -11,7 +11,7 @@ public class MovingPlatformAutomatic : MonoBehaviour, IPointerClickHandler
 
     [SerializeField] Vector2 endPoint;
     [SerializeField] float moveSpeed;
-    [SerializeField] bool movePlayer;
+    [SerializeField] bool movePlayer, ghostCanInteract;
     [SerializeField] Transform player; // can make this a reference in level controller later
 
     private void Awake()
@@ -21,7 +21,7 @@ public class MovingPlatformAutomatic : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Trigger();
+        if (ghostCanInteract) Trigger();
     }
 
     public void Trigger()
