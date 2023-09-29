@@ -10,6 +10,8 @@ public class Stomp : MonoBehaviour, IPointerClickHandler
     bool isTriggered, isReturning;
     float t;
 
+    [SerializeField] private AudioSource StompSFX;
+
     public void OnPointerClick(PointerEventData eventData)
     {
         Trigger();
@@ -19,6 +21,7 @@ public class Stomp : MonoBehaviour, IPointerClickHandler
     {
         isTriggered = true;
         isReturning = false;
+        StompSFX.Play();
     }
 
     // Update is called once per frame

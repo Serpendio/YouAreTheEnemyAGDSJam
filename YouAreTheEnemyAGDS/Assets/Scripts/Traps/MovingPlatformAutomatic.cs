@@ -14,6 +14,8 @@ public class MovingPlatformAutomatic : MonoBehaviour, IPointerClickHandler
     [SerializeField] bool movePlayer, ghostCanInteract;
     [SerializeField] Transform player; // can make this a reference in level controller later
 
+    [SerializeField] private AudioSource movingPlatformSFX;
+
     private void Awake()
     {
         startPoint = transform.position;
@@ -28,6 +30,7 @@ public class MovingPlatformAutomatic : MonoBehaviour, IPointerClickHandler
     {
         isMoving = true;
         movingToEnd = !movingToEnd;
+        movingPlatformSFX.Play();
     }
 
     private void FixedUpdate()

@@ -5,7 +5,9 @@ using UnityEngine.EventSystems;
 
 public class DroppingObj : MonoBehaviour, IPointerClickHandler
 {
-    
+
+    [SerializeField] private AudioSource DroppingSFX;
+
     public void OnPointerClick(PointerEventData eventData)
     {
         Trigger();
@@ -14,6 +16,7 @@ public class DroppingObj : MonoBehaviour, IPointerClickHandler
     void Trigger()
     {
         GetComponent<Rigidbody2D>().isKinematic = false;
+        DroppingSFX.Play();
     }
 
     private void Awake()

@@ -9,6 +9,7 @@ public class Crossbow : MonoBehaviour, IPointerClickHandler
     [SerializeField] Rigidbody2D bolt;
     [SerializeField] float fireVelocity;
 
+    [SerializeField] private AudioSource crossbowSFX;
     public void OnPointerClick(PointerEventData eventData)
     {
         Trigger();
@@ -17,6 +18,7 @@ public class Crossbow : MonoBehaviour, IPointerClickHandler
     void Trigger()
     {
         Instantiate(bolt, transform.position, transform.rotation).velocity = transform.up * fireVelocity;
+        crossbowSFX.Play();
     }
 
     // Start is called before the first frame update
