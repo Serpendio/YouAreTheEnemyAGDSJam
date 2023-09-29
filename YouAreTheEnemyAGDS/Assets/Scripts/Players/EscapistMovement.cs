@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,7 @@ public class PlayerControls : MonoBehaviour
 
     Rigidbody2D rig;
     float movement;
-    bool isGrounded, tryJump;
+    bool isGrounded, tryJump, climbingLadder, jumpHeld;
 
 
     // Start is called before the first frame update
@@ -33,25 +34,54 @@ public class PlayerControls : MonoBehaviour
             tryJump = true;
     }
 
+    public void HoldJump(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            jumpHeld = true;
+        else if (context.canceled)
+            jumpHeld = false;
+    }
+
     private void CheckGround()
     {
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, checkDist, groundLayer).collider != null;
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         CheckGround();
 
         var vel = rig.velocity;
         vel.x = movement * moveSpeed;
-        if (tryJump && isGrounded) 
-         {
+        if (tryJump && isGrounded)
+        { 
             vel.y = jumpVelocity;
             jumpSoundEffect.Play();
-         };
+            tryJump = false;
+        }
+        else if (jumpHeld)
+        {
+            if (climbingLadder)
+            {
+                vel.y = moveSpeed;
+            }
+            else if (isGrounded)
+            {
+                vel.y = jumpVelocity;
+                jumpSoundEffect.Play();
+            }
+        }
+        if (climbingLadder)
+        {
+            vel.y = Mathf.Max(vel.y, 0);
+        }
         rig.velocity = vel;
+    }
 
-        tryJump = false;
+    public void ClimbLadder(bool climbing)
+    {
+        climbingLadder = climbing;
+        //GetComponent<Rigidbody2D>().gravityScale = climbing ? 0 : 1;
     }
 }
