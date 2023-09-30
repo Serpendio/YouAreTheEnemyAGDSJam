@@ -16,7 +16,7 @@ public class Crossbow : MonoBehaviour, ITrapBase
     {
         if (cooldown > 0) return;
         cooldown = cooldownTime;
-        Instantiate(bolt, transform.position, transform.rotation).velocity = transform.up * fireVelocity;
+        Instantiate(bolt, transform.position, transform.rotation).velocity = transform.right * fireVelocity;
         crossbowSFX.Play();
     }
 
