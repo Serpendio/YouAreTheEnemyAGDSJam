@@ -11,20 +11,23 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float checkDist = 0.6f;
 
     [SerializeField] private AudioSource jumpSoundEffect;
+    [SerializeField] private Animator animator;
 
     Rigidbody2D rig;
     float movement;
     bool isGrounded, tryJump, climbingLadder, jumpHeld;
 
 
-    void Start()
+    void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     
     public void Move(InputAction.CallbackContext context)
     {
         movement = context.ReadValue<float>();
+        animator.SetBool("IsMoving", movement == 0);
     }
     
     public void Jump(InputAction.CallbackContext context)

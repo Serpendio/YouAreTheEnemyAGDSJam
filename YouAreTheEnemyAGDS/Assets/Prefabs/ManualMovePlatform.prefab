@@ -189,6 +189,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e6556004-f901-4bad-a4d0-12baa0a29933
     m_ActionName: Ghost/Drag[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 17e0d1c0-6444-4a13-8975-39eba9d4b02a
+    m_ActionName: Escapist/Climb[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Ghost

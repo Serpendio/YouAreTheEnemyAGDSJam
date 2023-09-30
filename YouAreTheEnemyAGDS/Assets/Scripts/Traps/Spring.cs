@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Stomp : MonoBehaviour, ITrapBase
+public class Spring : MonoBehaviour, ITrapBase
 {
-    [SerializeField] float maxDist, crushSpeed;
+    [SerializeField] float maxDist, crushSpeed, preferedDist;
     [SerializeField] Transform crusher;
     bool isTriggered, isReturning;
     float t;
