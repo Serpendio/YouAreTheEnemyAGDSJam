@@ -9,6 +9,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float moveSpeed, jumpVelocity;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] float checkDist = 0.6f;
+    [SerializeField] Canvas pauseMenu;
 
     [SerializeField] private AudioSource jumpSoundEffect;
     [SerializeField] private Animator animator;
@@ -17,9 +18,14 @@ public class PlayerControls : MonoBehaviour
     float movement;
     bool isGrounded, tryJump, climbingLadder, jumpHeld;
 
+    private void OnEnable()
+    {
+        
+    }
 
     void Awake()
     {
+   
         rig = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
@@ -86,4 +92,10 @@ public class PlayerControls : MonoBehaviour
         climbingLadder = climbing;
         //GetComponent<Rigidbody2D>().gravityScale = climbing ? 0 : 1;
     }
+
+    public void Pause(InputAction.CallbackContext context)
+    {
+        pauseMenu.gameObject.SetActive(true);
+    }
+
 }
