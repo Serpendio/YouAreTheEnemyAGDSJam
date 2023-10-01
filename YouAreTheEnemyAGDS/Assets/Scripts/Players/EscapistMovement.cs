@@ -38,7 +38,7 @@ public class PlayerControls : MonoBehaviour
     
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.started)
             tryJump = true;
     }
 
