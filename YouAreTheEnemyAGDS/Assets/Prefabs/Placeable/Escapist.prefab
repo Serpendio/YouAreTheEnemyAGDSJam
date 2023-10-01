@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpVelocity: 5
+  jumpVelocity: 7
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -255,8 +255,8 @@ MonoBehaviour:
     m_ActionName: Escapist/Climb[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: e6556004-f901-4bad-a4d0-12baa0a29933
-    m_ActionName: Ghost/Drag[/Mouse/leftButton]
+    m_ActionId: 5082a4d1-91fb-4589-be11-35ecb58eae4e
+    m_ActionName: Ghost/Hold
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Escapist
