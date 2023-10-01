@@ -5,7 +5,6 @@ using UnityEngine;
 public class WinCondition : MonoBehaviour
 {
     [SerializeField] Sprite unlockedSprite;
-    [SerializeField] private AudioSource escaperWinSFX;
 
     bool isLocked = true;
 
@@ -18,7 +17,7 @@ public class WinCondition : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !isLocked)
-            print("Escapist Won");
-        escaperWinSFX.Play();
+            print("Escapist Won!");
     }
+
 }
