@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 457695386776104833, guid: 52e875781d2c2664d8dcdc536d8a2aa4, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2909578
+      objectReference: {fileID: 0}
+    - target: {fileID: 457695386776104833, guid: 52e875781d2c2664d8dcdc536d8a2aa4, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.3545211
+      objectReference: {fileID: 0}
     - target: {fileID: 3694302624341994903, guid: 52e875781d2c2664d8dcdc536d8a2aa4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
