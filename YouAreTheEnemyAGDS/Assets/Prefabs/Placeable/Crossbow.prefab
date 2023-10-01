@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bolt: {fileID: 3745792111631144230, guid: 449906175504fb749b0f67954fc49550, type: 3}
   fireVelocity: 30
-  cooldownTime: 0
+  cooldownTime: 1
   crossbowSFX: {fileID: -2463355282126453623}
 --- !u!61 &2224622812585431120
 BoxCollider2D:
