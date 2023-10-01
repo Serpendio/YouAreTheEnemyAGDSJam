@@ -9,7 +9,7 @@ public class WinCondition : MonoBehaviour
 {
     [SerializeField] Sprite unlockedSprite;
     static float LevelCount = 1;
-    private float MaxLevel = 2;
+    private float MaxLevel = 3;
     public static Action OnDoorEntered;
 
     bool isLocked = true;
@@ -41,7 +41,14 @@ public class WinCondition : MonoBehaviour
         if (LevelCount<MaxLevel)
             StartCoroutine("NextLevel");
         else
-            Debug.Log("PLAYER WON!");
+            StartCoroutine("Credits");
+    }
+
+    IEnumerator Credits()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
     }
 
     IEnumerator NextLevel()
