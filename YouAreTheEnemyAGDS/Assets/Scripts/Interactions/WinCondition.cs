@@ -33,7 +33,8 @@ public class WinCondition : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player") || isLocked) return;
-        OnDoorEntered?.Invoke();    
+        //OnDoorEntered?.Invoke();
+        LevelController.Instance.EndLevel();
     }
 
     public void SceneChange()

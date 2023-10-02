@@ -7,6 +7,10 @@ public class OutOfBounds : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-            print("Ghost Won");
+        {
+            LevelController.Instance.HitPlayer();
+            LevelController.Instance.HitPlayer();
+            LevelController.Instance.HitPlayer();
+        }
     }
 }

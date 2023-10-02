@@ -33,7 +33,7 @@ public class PlayerControls : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         movement = context.ReadValue<float>();
-        animator.SetBool("IsMoving", movement == 0);
+        animator.SetBool("IsMoving", movement != 0);
     }
     
     public void Jump(InputAction.CallbackContext context)

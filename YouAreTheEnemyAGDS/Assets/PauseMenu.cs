@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject PauseMenuObject;
+    [SerializeField] TMPro.TextMeshProUGUI text;
+    [SerializeField] GameObject resume;
 
-    // Start is called before the first frame update
+    bool levelEnded = false;
+
+    private void Start()
+    {
+        LevelController.Instance.OnLevelEnded += LevelEnd;
+    }
+
     public void OnPause(InputAction.CallbackContext context)
     {
        // movement = context.ReadValue<float>();
@@ -21,25 +30,23 @@ public class PauseMenu : MonoBehaviour
         TogglePauseMenu();
     }
 
-    public void StartGame()
+    private void LevelEnd()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        text.text = LevelController.Instance.playerWon == true ? "King Wins" : "Ghost Wins";
+        
+        levelEnded = true;
+        resume.SetActive(false);
+
+        TogglePauseMenu(true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //if(Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    TogglePauseMenu();
-        //}
-    }
-
-    public void TogglePauseMenu()
+    public void TogglePauseMenu(bool overridePause = false, bool shouldResume = false)
     {
         Debug.Log("PauseMenu");
 
-        if (PauseMenuObject.activeSelf)
+        if (!overridePause && levelEnded) return;
+
+        if (PauseMenuObject.activeSelf && !(overridePause && shouldResume))
         {
             Time.timeScale = 1f;
             PauseMenuObject.SetActive(false);
@@ -48,6 +55,11 @@ public class PauseMenu : MonoBehaviour
         PauseMenuObject.SetActive(true);
         Time.timeScale = 0f;
 
+    }
+
+    public void TogglePause()
+    {
+        TogglePauseMenu();
     }
 }
 
