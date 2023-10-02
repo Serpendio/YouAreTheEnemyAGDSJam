@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 19
   m_Sprite: {fileID: -1548386982, guid: 254412e3405e50b45b38f71d5142b1e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -170,6 +170,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   checkDist: 1.1
+  pauseMenu: {fileID: 0}
   jumpSoundEffect: {fileID: -895895376274415984}
   animator: {fileID: 0}
 --- !u!114 &7569194904795974717

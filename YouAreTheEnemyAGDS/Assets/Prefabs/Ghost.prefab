@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactRadius: 1
-  moveSpeed: 4
+  moveSpeed: 6
   trapMask:
     serializedVersion: 2
     m_Bits: 256
@@ -4968,7 +4968,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_RenderMode: 5
   m_MeshDistribution: 0
   m_SortMode: 0
