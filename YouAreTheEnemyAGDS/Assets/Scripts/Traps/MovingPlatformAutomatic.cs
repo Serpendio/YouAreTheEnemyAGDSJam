@@ -12,7 +12,6 @@ public class MovingPlatformAutomatic : MonoBehaviour, ITrapBase
     [SerializeField] Vector2 endPoint;
     [SerializeField] float moveSpeed;
     [SerializeField] bool movePlayer, ghostCanInteract;
-    [SerializeField] Transform player; // can make this a reference in level controller later
 
     [SerializeField] private AudioSource movingPlatformSFX;
 
@@ -39,7 +38,7 @@ public class MovingPlatformAutomatic : MonoBehaviour, ITrapBase
             if (t <= 0 || t >= 1) isMoving = false;
             var oldPos = transform.position;
             transform.position = Vector3.Lerp(startPoint, startPoint + endPoint, t);
-            if (movePlayer && isTouchingPlayer) player.position += transform.position - oldPos;
+            if (movePlayer && isTouchingPlayer) LevelController.Instance.player.transform.position += transform.position - oldPos;
         }
     }
 
