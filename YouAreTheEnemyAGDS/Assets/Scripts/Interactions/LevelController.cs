@@ -14,6 +14,8 @@ public class LevelController : MonoBehaviour
     public event Action<int> OnPlayerHealthChanged;
     public event Action OnLevelEnded;
 
+    [SerializeField] private AudioSource ghostWinSFX;
+
     private void Awake()
     {
         Instance = this;
@@ -30,6 +32,7 @@ public class LevelController : MonoBehaviour
         if (playerHealth == 0)
         {
             playerWon = false;
+            ghostWinSFX.Play();
             OnLevelEnded.Invoke();
         }
         OnPlayerHealthChanged.Invoke(playerHealth);

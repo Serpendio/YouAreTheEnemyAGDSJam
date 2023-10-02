@@ -12,11 +12,14 @@ public class WinCondition : MonoBehaviour
     private float MaxLevel = 3;
     public static Action OnDoorEntered;
 
+    [SerializeField] private AudioSource keyGetSFX;
+    [SerializeField] private AudioSource EscapeWinSFX;
+
     bool isLocked = true;
 
     private void OnEnable()
     {
-        OnDoorEntered += SceneChange;
+        OnDoorEntered += SceneChange;        
     }
 
     private void OnDisable()
@@ -28,13 +31,16 @@ public class WinCondition : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().sprite = unlockedSprite;
         isLocked = false;
+        keyGetSFX.Play();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player") || isLocked) return;
         //OnDoorEntered?.Invoke();
+        EscapeWinSFX.Play();
         LevelController.Instance.EndLevel();
+       
     }
 
     public void SceneChange()
