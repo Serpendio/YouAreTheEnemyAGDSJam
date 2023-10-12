@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactRadius: 1
-  moveSpeed: 6
+  moveSpeed: 8
   trapMask:
     serializedVersion: 2
     m_Bits: 256

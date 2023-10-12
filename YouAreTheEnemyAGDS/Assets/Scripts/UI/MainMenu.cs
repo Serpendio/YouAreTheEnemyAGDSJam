@@ -26,7 +26,8 @@ namespace AGDS
 
         public void LoadScene()
         {
-            var nextIndex = gameObject.scene.buildIndex + 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            /*var nextIndex = gameObject.scene.buildIndex + 1;
             var operation = SceneManager.LoadSceneAsync(nextIndex, LoadSceneMode.Additive);
             operation.completed += (op) =>
             {
@@ -34,7 +35,7 @@ namespace AGDS
 
                 SceneManager.UnloadSceneAsync(gameObject.scene);
                 SceneManager.SetActiveScene(next);
-            };
+            };*/
         }
 
         public void QuitApp()
