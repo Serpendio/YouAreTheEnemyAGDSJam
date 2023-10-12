@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class LevelController : MonoBehaviour
 {
     public static LevelController Instance;
-    [SerializeField] public GameObject player;
+    public GameObject player;
+    [SerializeField] private bool finalLevel;
     private int playerHealth = 3;
     public bool playerWon = true;
 
@@ -41,7 +42,8 @@ public class LevelController : MonoBehaviour
     public void NextLevel()
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        int sceneIndex = finalLevel ? 0 : SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(sceneIndex);
     }
 
     public void Restart()
